@@ -1,6 +1,15 @@
 package com.project.code.Repo;
 
-public interface StoreRepository {
+import com.project.code.Model.Store;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface StoreRepository extends JpaRepository<Store, Long> {
 // 1. Add the repository interface:
 //    - Extend JpaRepository<Store, Long> to inherit basic CRUD functionality.
 //    - This allows the repository to perform operations like save, delete, update, and find without having to implement these methods manually.
@@ -14,6 +23,7 @@ public interface StoreRepository {
 //      - Parameter: Long id
 
 // Example: public Store findById(Long id);
+    Optional<Store> findById(Long id);
 
 //    - **findBySubName**:
 //      - This method will retrieve stores whose name contains a given substring.
@@ -21,6 +31,7 @@ public interface StoreRepository {
 //      - Parameter: String pname
 //      - Use @Query annotation to write a custom query.
 
-   
+    @Query("SELECT i FROM Store i WHERE LOWER(i.name) LIKE LOWER(CONCAT('%', :pname, '%'))")
+    List<Store> findBySubName(String pname);
 
 }
