@@ -38,7 +38,7 @@ public class Store {
 //    - **Inventory**: A store can have multiple inventory entries.
 //    - Use @OneToMany(mappedBy = "store") to reflect the one-to-many relationship with Inventory.
 //    - Use @JsonManagedReference("inventory-store") to manage bidirectional relationships and avoid circular references.
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "store", fetch = FetchType.EAGER)
     @JsonManagedReference("inventory-store")
     private List<Inventory> Inventories;
 

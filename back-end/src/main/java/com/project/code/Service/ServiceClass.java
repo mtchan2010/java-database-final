@@ -22,7 +22,7 @@ public class ServiceClass {
 //    - Parameters: `Inventory inventory`
 //    - Return Type: `boolean` (Returns `false` if inventory exists, otherwise `true`)
     public boolean validateInventory(Inventory inventory) {
-        Inventory foundInventory = inventoryRepository.findByProductIdandStoreId(
+        Inventory foundInventory = inventoryRepository.findByProductIdAndStoreId(
                 inventory.getProduct().getId(), inventory.getStore().getId());
         return (foundInventory == null);
     }
@@ -49,7 +49,7 @@ public class ServiceClass {
 //    - Parameters: `Inventory inventory`
 //    - Return Type: `Inventory` (Returns the inventory record for the product-store combination)
     public Inventory getInventoryId(Inventory inventory) {
-        return inventoryRepository.findByProductIdandStoreId(
+        return inventoryRepository.findByProductIdAndStoreId(
                 inventory.getProduct().getId(), inventory.getStore().getId());
     }
 

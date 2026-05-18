@@ -64,7 +64,7 @@ public class OrderService {
 //    - Create and save `OrderItem` for each product and associate it with the `OrderDetails` using `orderItemRepository.save()`.
         OrderDetails finalOrderDetails = orderDetails;
         placeOrderRequest.getPurchaseProduct().forEach(purchaseProduct -> {
-            Inventory inventory = inventoryRepository.findByProductIdandStoreId(purchaseProduct.getId(), store.getId());
+            Inventory inventory = inventoryRepository.findByProductIdAndStoreId(purchaseProduct.getId(), store.getId());
             inventory.setStockLevel(inventory.getStockLevel()-purchaseProduct.getQuantity());
             inventoryRepository.save(inventory);
 

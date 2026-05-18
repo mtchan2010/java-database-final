@@ -2,7 +2,6 @@ package com.project.code.Model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -54,7 +53,7 @@ public class Customer {
     // Example: @JsonManagedReference
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List<Order> orders;
+    private List<OrderDetails> orders;
 
 // 6. Getters and Setters:
 //    - For each field ('id', 'name', 'email', 'phone'), add getter and setter methods.
@@ -94,11 +93,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public List<Order> getOrders() {
+    public List<OrderDetails> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(List<OrderDetails> orders) {
         this.orders = orders;
     }
 
